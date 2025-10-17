@@ -13,7 +13,7 @@ npm install
 # Install frontend dependencies and build
 echo "📦 Installing frontend dependencies..."
 cd ../frontend
-npm install
+npm install --include=dev
 
 echo "🏗️  Building frontend..."
 npm run build
