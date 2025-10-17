@@ -31,9 +31,9 @@ router.post('/register', async (req, res) => {
       email,
       password: hashedPassword,
       name,
-      userType, // 'client' veya 'freelancer'
+      role: userType, // 'client' veya 'freelancer' - PostgreSQL'de role olarak saklanır
       bio: '',
-      skills: [],
+      skills: '',
       createdAt: new Date().toISOString()
     };
 
@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
 
     // Token oluştur
     const token = jwt.sign(
-      { userId: user.id, email: user.email, userType: user.userType },
+      { userId: user.id, email: user.email, userType: user.role },
       config.jwtSecret,
       { expiresIn: '7d' }
     );
@@ -79,15 +79,18 @@ router.post('/login', async (req, res) => {
 
     // Token oluştur
     const token = jwt.sign(
-      { userId: user.id, email: user.email, userType: user.userType },
+      { userId: user.id, email: user.email, userType: user.role },
       config.jwtSecret,
       { expiresIn: '7d' }
     );
 
-    // Şifreyi response'dan çıkar
-    const { password: _, ...userWithoutPassword } = user;
+    // Şifreyi response'dan çıkar ve userType ekle (frontend uyumluluğu için)
+    const { password: _, role, ...userWithoutPassword } = user;
 
-    res.json({ user: userWithoutPassword, token });
+    res.json({ 
+      user: { ...userWithoutPassword, userType: role }, 
+      token 
+    });
   } catch (error) {
     console.error('Giriş hatası:', error);
     res.status(500).json({ error: 'Giriş sırasında hata oluştu' });
