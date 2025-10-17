@@ -87,13 +87,13 @@ const Home = () => {
       {/* Hero Section - Enhanced */}
       <section className="relative overflow-hidden">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-50 to-pink-50 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-50 to-pink-50 dark:from-primary/10 dark:via-purple-950/20 dark:to-pink-950/20 -z-10" />
         <div className="absolute inset-0 bg-grid-pattern opacity-5 -z-10" />
         
         <div className="text-center space-y-8 py-20 px-4">
           {/* Badge */}
           <div className="flex justify-center">
-            <Badge className="px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-0">
+            <Badge className="px-4 py-2 text-sm font-medium bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-foreground border-0">
               <Sparkles className="h-4 w-4 mr-2 inline" />
               Yeni Nesil Freelance Platform
             </Badge>
@@ -106,7 +106,7 @@ const Home = () => {
                 Freelance
               </span>
               <br />
-              <span className="text-gray-900">İşlerinizi Yönetin</span>
+              <span className="text-gray-900 dark:text-gray-100">İşlerinizi Yönetin</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Karmaşık süreçlerden kurtulun. İş verenler ve freelancerlar için 
@@ -170,7 +170,7 @@ const Home = () => {
             <Sparkles className="h-4 w-4 mr-2 inline" />
             Özellikler
           </Badge>
-          <h2 className="text-4xl font-bold">Neden Bizi Seçmelisiniz?</h2>
+          <h2 className="text-4xl font-bold dark:text-gray-100">Neden Bizi Seçmelisiniz?</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Modern teknoloji ve kullanıcı dostu arayüz ile freelance işlerinizi yönetmek hiç bu kadar kolay olmamıştı
           </p>
@@ -205,7 +205,7 @@ const Home = () => {
             <Target className="h-4 w-4 mr-2 inline" />
             Nasıl Çalışır
           </Badge>
-          <h2 className="text-4xl font-bold">3 Adımda Başlayın</h2>
+          <h2 className="text-4xl font-bold dark:text-gray-100">3 Adımda Başlayın</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Dakikalar içinde platformu kullanmaya başlayın
           </p>
@@ -241,14 +241,14 @@ const Home = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-gradient-to-br from-primary/5 to-purple-50 rounded-3xl p-12">
+      <section className="bg-gradient-to-br from-primary/5 to-purple-50 dark:from-primary/10 dark:to-purple-950/20 rounded-3xl p-12">
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="text-center space-y-4">
             <Badge className="px-4 py-2 bg-primary text-primary-foreground">
               <TrendingUp className="h-4 w-4 mr-2 inline" />
               Avantajlar
             </Badge>
-            <h2 className="text-4xl font-bold">Özgürlük ve Basitlik</h2>
+            <h2 className="text-4xl font-bold dark:text-gray-100">Özgürlük ve Basitlik</h2>
             <p className="text-lg text-muted-foreground">
               Karmaşık süreçlerden ve gereksiz kısıtlamalardan uzak
             </p>
@@ -256,9 +256,9 @@ const Home = () => {
 
           <div className="grid md:grid-cols-2 gap-4">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-3 bg-white/80 backdrop-blur rounded-lg p-4">
+              <div key={index} className="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-lg p-4">
                 {benefit.icon}
-                <span className="font-medium">{benefit.text}</span>
+                <span className="font-medium dark:text-gray-200">{benefit.text}</span>
               </div>
             ))}
           </div>
@@ -269,7 +269,7 @@ const Home = () => {
       <section className="relative overflow-hidden rounded-3xl">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple-600 to-pink-600 -z-10" />
         <div className="relative text-center space-y-6 py-20 px-4 text-white">
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
             Hayalinizdeki Projeye Bugün Başlayın
           </h2>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
