@@ -266,28 +266,27 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative overflow-hidden rounded-3xl">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple-600 to-pink-600 -z-10" />
-        <div className="relative text-center space-y-6 py-20 px-4 text-white">
-          <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#ffffff' }}>
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+        <div className="text-center space-y-6 py-20 px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
             Hayalinizdeki Projeye Bugün Başlayın
           </h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             Binlerce iş veren ve freelancer'ın güvendiği platformda siz de yerinizi alın.
             Ücretsiz hesap oluşturun ve fırsatları keşfetmeye başlayın!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <Link to="/register">
-              <Button size="lg" variant="secondary" className="text-lg px-8 py-6 shadow-xl" style={{ backgroundColor: '#ffffff', color: '#111827' }}>
+              <Button size="lg" className="text-lg px-8 py-6 shadow-xl bg-primary hover:bg-primary/90 text-white">
                 <Sparkles className="h-5 w-5 mr-2" />
                 Ücretsiz Kayıt Ol
               </Button>
             </Link>
             <Link to="/services">
               <Button 
-                size="lg" 
-                className="text-lg px-8 py-6 bg-white/20 hover:bg-white/30 border-white/50 backdrop-blur"
-                style={{ color: '#ffffff' }}
+                size="lg"
+                variant="outline" 
+                className="text-lg px-8 py-6 border-2 border-primary text-primary hover:bg-primary/10"
               >
                 Freelancerları Keşfet
                 <ArrowRight className="h-5 w-5 ml-2" />
@@ -296,14 +295,14 @@ const Home = () => {
           </div>
 
           {/* Social Proof */}
-          <div className="pt-8 flex justify-center items-center gap-8 text-sm" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+          <div className="pt-8 flex justify-center items-center gap-8 text-sm text-gray-600 dark:text-gray-400">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5" style={{ color: '#ffffff' }} />
-              <span style={{ color: '#ffffff' }}>Kredi kartı gerekmez</span>
+              <CheckCircle2 className="h-5 w-5 text-green-600" />
+              <span className="text-gray-700 dark:text-gray-300">Kredi kartı gerekmez</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5" style={{ color: '#ffffff' }} />
-              <span style={{ color: '#ffffff' }}>Anında başla</span>
+              <CheckCircle2 className="h-5 w-5 text-green-600" />
+              <span className="text-gray-700 dark:text-gray-300">Anında başla</span>
             </div>
           </div>
         </div>
