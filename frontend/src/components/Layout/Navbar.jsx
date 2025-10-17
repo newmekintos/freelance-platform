@@ -1,10 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Briefcase, User, MessageSquare, LogOut, Plus } from 'lucide-react';
+import { Briefcase, User, MessageSquare, LogOut, Plus, Moon, Sun } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import Button from '../ui/Button';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,15 +15,29 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="border-b bg-white">
+    <nav className="border-b bg-white dark:bg-gray-900 dark:border-gray-800 transition-colors">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to={user ? "/dashboard" : "/"} className="flex items-center space-x-2">
             <Briefcase className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">FreelancePlatform</span>
+            <span className="text-xl font-bold dark:text-white">FreelancePlatform</span>
           </Link>
 
           <div className="flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <Button 
+              variant="ghost" 
+              onClick={toggleTheme}
+              className="rounded-full w-10 h-10 p-0"
+              title={theme === 'dark' ? 'Açık Tema' : 'Koyu Tema'}
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
+
             {user ? (
               <>
                 <Link to="/jobs">
