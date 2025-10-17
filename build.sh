@@ -18,4 +18,13 @@ npm install
 echo "🏗️  Building frontend..."
 npm run build
 
+# Verify build
+if [ -d "dist" ]; then
+  echo "✅ Frontend build successful! dist folder created."
+  ls -la dist/
+else
+  echo "❌ Frontend build failed! dist folder not found."
+  exit 1
+fi
+
 echo "✅ Build complete!"
