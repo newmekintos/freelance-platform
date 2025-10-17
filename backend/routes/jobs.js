@@ -8,7 +8,7 @@ const router = express.Router();
 // Tüm iş ilanlarını getir
 router.get('/', async (req, res) => {
   try {
-    const jobs = await jobsDB.read();
+    const jobs = await jobsDB.find();
     
     // Her iş için kullanıcı bilgisini ekle
     const jobsWithUsers = await Promise.all(

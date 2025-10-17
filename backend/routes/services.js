@@ -8,7 +8,7 @@ const router = express.Router();
 // Tüm servisleri getir
 router.get('/', async (req, res) => {
   try {
-    const services = await servicesDB.read();
+    const services = await servicesDB.find();
     
     // Her servis için kullanıcı bilgisini ekle
     const servicesWithUsers = await Promise.all(

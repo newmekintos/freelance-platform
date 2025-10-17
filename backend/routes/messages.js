@@ -8,7 +8,7 @@ const router = express.Router();
 // Kullanıcının tüm konuşmalarını getir
 router.get('/conversations', authenticate, async (req, res) => {
   try {
-    const conversations = await conversationsDB.read();
+    const conversations = await conversationsDB.find();
     
     // Kullanıcının dahil olduğu konuşmaları filtrele
     const userConversations = conversations.filter(conv => 
@@ -95,7 +95,7 @@ router.post('/conversations', authenticate, async (req, res) => {
     }
 
     // Mevcut bir konuşma var mı kontrol et
-    const conversations = await conversationsDB.read();
+    const conversations = await conversationsDB.find();
     const existingConversation = conversations.find(conv => 
       conv.participants.includes(req.userId) && conv.participants.includes(otherUserId)
     );
