@@ -153,11 +153,11 @@ const Home = () => {
       {/* Stats Section */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+          <Card key={index} className="text-center hover:shadow-lg transition-shadow dark:bg-gray-800 dark:border-gray-700">
             <CardContent className="pt-6 space-y-2">
               <div className="flex justify-center text-primary">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-3xl font-bold text-primary dark:text-primary">{stat.value}</div>
+              <div className="text-sm text-muted-foreground dark:text-gray-400">{stat.label}</div>
             </CardContent>
           </Card>
         ))}
@@ -180,16 +180,16 @@ const Home = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="hover:shadow-xl transition-all hover:-translate-y-1 border-2 hover:border-primary/20"
+              className="hover:shadow-xl transition-all hover:-translate-y-1 border-2 hover:border-primary/20 dark:bg-gray-800 dark:border-gray-700"
             >
               <CardHeader>
-                <div className={`w-20 h-20 rounded-2xl ${feature.color} flex items-center justify-center mb-4`}>
+                <div className={`w-20 h-20 rounded-2xl ${feature.color} dark:bg-gray-700 flex items-center justify-center mb-4`}>
                   {feature.icon}
                 </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
+                <CardTitle className="text-xl dark:text-gray-100">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base leading-relaxed">
+                <CardDescription className="text-base leading-relaxed dark:text-gray-300">
                   {feature.description}
                 </CardDescription>
               </CardContent>
@@ -214,18 +214,18 @@ const Home = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <div key={index} className="relative">
-              <Card className="h-full hover:shadow-lg transition-shadow">
+              <Card className="h-full hover:shadow-lg transition-shadow dark:bg-gray-800 dark:border-gray-700">
                 <CardHeader>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                       {step.icon}
                     </div>
-                    <div className="text-5xl font-bold text-primary/20">{step.number}</div>
+                    <div className="text-5xl font-bold text-primary/20 dark:text-primary/30">{step.number}</div>
                   </div>
-                  <CardTitle className="text-2xl">{step.title}</CardTitle>
+                  <CardTitle className="text-2xl dark:text-gray-100">{step.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base leading-relaxed">
+                  <CardDescription className="text-base leading-relaxed dark:text-gray-300">
                     {step.description}
                   </CardDescription>
                 </CardContent>
@@ -269,16 +269,16 @@ const Home = () => {
       <section className="relative overflow-hidden rounded-3xl">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple-600 to-pink-600 -z-10" />
         <div className="relative text-center space-y-6 py-20 px-4 text-white">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl md:text-5xl font-bold !text-white">
             Hayalinizdeki Projeye Bugün Başlayın
           </h2>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          <p className="text-xl !text-white/90 max-w-2xl mx-auto">
             Binlerce iş veren ve freelancer'ın güvendiği platformda siz de yerinizi alın.
             Ücretsiz hesap oluşturun ve fırsatları keşfetmeye başlayın!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <Link to="/register">
-              <Button size="lg" variant="secondary" className="text-lg px-8 py-6 shadow-xl">
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-6 shadow-xl !text-gray-900 !bg-white hover:!bg-gray-100">
                 <Sparkles className="h-5 w-5 mr-2" />
                 Ücretsiz Kayıt Ol
               </Button>
@@ -286,7 +286,7 @@ const Home = () => {
             <Link to="/services">
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-6 bg-white/20 hover:bg-white/30 border-white/50 text-white backdrop-blur"
+                className="text-lg px-8 py-6 bg-white/20 hover:bg-white/30 border-white/50 !text-white backdrop-blur"
               >
                 Freelancerları Keşfet
                 <ArrowRight className="h-5 w-5 ml-2" />
@@ -295,14 +295,14 @@ const Home = () => {
           </div>
 
           {/* Social Proof */}
-          <div className="pt-8 flex justify-center items-center gap-8 text-sm opacity-80">
+          <div className="pt-8 flex justify-center items-center gap-8 text-sm !text-white/80">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5" />
-              <span>Kredi kartı gerekmez</span>
+              <CheckCircle2 className="h-5 w-5 text-white" />
+              <span className="!text-white">Kredi kartı gerekmez</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5" />
-              <span>Anında başla</span>
+              <CheckCircle2 className="h-5 w-5 text-white" />
+              <span className="!text-white">Anında başla</span>
             </div>
           </div>
         </div>
