@@ -4,6 +4,11 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import jwt from 'jsonwebtoken';
 import { config } from './config.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Route imports
 import authRoutes from './routes/auth.js';
@@ -40,6 +45,21 @@ app.use('/api/users', usersRoutes);
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
+
+// Serve static files from frontend build (Production only)
+if (process.env.NODE_ENV === 'production') {
+  const frontendPath = path.join(__dirname, '../frontend/dist');
+  app.use(express.static(frontendPath));
+  
+  // Catch-all route for SPA
+  app.get('*', (req, res) => {
+    // Don't serve index.html for API routes
+    if (req.path.startsWith('/api/')) {
+      return res.status(404).json({ error: 'Not found' });
+    }
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  });
+}
 
 // Socket.io authentication middleware
 io.use((socket, next) => {
