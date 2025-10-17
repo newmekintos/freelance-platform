@@ -1,6 +1,30 @@
-# Freelance Platform
+# 🚀 Freelance Platform
 
-Basit, hızlı ve etkili bir freelance platformu. İş verenler ve freelancerlar için KYC, ödeme sistemi gibi karmaşık süreçler olmadan direkt bağlantı kurmayı sağlar.
+Modern, hızlı ve kullanıcı dostu bir freelance platformu. İş verenler ve freelancerlar için KYC, ödeme sistemi gibi karmaşık süreçler olmadan direkt bağlantı kurmayı sağlar.
+
+## ⚡ Hızlı Başlangıç
+
+```bash
+# Tek komutla her şeyi başlat
+npm run dev
+```
+
+Backend: http://localhost:5000  
+Frontend: http://localhost:5173
+
+## 🌍 Canlı Demo
+
+**Yakında:** Platform Railway'de deploy edilecek!
+
+## 📦 Kurulum
+
+```bash
+# Tüm bağımlılıkları yükle
+npm run install:all
+
+# Development modda çalıştır
+npm run dev
+```
 
 ## Özellikler
 
