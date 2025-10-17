@@ -269,16 +269,16 @@ const Home = () => {
       <section className="relative overflow-hidden rounded-3xl">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple-600 to-pink-600 -z-10" />
         <div className="relative text-center space-y-6 py-20 px-4 text-white">
-          <h2 className="text-4xl md:text-5xl font-bold !text-white">
+          <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#ffffff' }}>
             Hayalinizdeki Projeye Bugün Başlayın
           </h2>
-          <p className="text-xl !text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
             Binlerce iş veren ve freelancer'ın güvendiği platformda siz de yerinizi alın.
             Ücretsiz hesap oluşturun ve fırsatları keşfetmeye başlayın!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <Link to="/register">
-              <Button size="lg" variant="secondary" className="text-lg px-8 py-6 shadow-xl !text-gray-900 !bg-white hover:!bg-gray-100">
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-6 shadow-xl" style={{ backgroundColor: '#ffffff', color: '#111827' }}>
                 <Sparkles className="h-5 w-5 mr-2" />
                 Ücretsiz Kayıt Ol
               </Button>
@@ -286,7 +286,8 @@ const Home = () => {
             <Link to="/services">
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-6 bg-white/20 hover:bg-white/30 border-white/50 !text-white backdrop-blur"
+                className="text-lg px-8 py-6 bg-white/20 hover:bg-white/30 border-white/50 backdrop-blur"
+                style={{ color: '#ffffff' }}
               >
                 Freelancerları Keşfet
                 <ArrowRight className="h-5 w-5 ml-2" />
@@ -295,14 +296,14 @@ const Home = () => {
           </div>
 
           {/* Social Proof */}
-          <div className="pt-8 flex justify-center items-center gap-8 text-sm !text-white/80">
+          <div className="pt-8 flex justify-center items-center gap-8 text-sm" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5 text-white" />
-              <span className="!text-white">Kredi kartı gerekmez</span>
+              <CheckCircle2 className="h-5 w-5" style={{ color: '#ffffff' }} />
+              <span style={{ color: '#ffffff' }}>Kredi kartı gerekmez</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5 text-white" />
-              <span className="!text-white">Anında başla</span>
+              <CheckCircle2 className="h-5 w-5" style={{ color: '#ffffff' }} />
+              <span style={{ color: '#ffffff' }}>Anında başla</span>
             </div>
           </div>
         </div>
