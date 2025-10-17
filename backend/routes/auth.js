@@ -2,7 +2,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
-import { usersDB } from '../database.js';
+import { usersDB } from '../db-postgres.js';
 import { config } from '../config.js';
 
 const router = express.Router();

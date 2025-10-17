@@ -1,6 +1,6 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { conversationsDB, messagesDB, usersDB } from '../database.js';
+import { conversationsDB, messagesDB, usersDB } from '../db-postgres.js';
 import { authenticate } from '../middleware/auth.js';
 
 const router = express.Router();

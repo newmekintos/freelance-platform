@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import { config } from './config.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { initDatabase } from './db-postgres.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -121,8 +122,18 @@ io.on('connection', (socket) => {
   });
 });
 
-// Start server
-httpServer.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`);
-  console.log(`Socket.io server ready`);
-});
+// Initialize database and start server
+async function startServer() {
+  try {
+    await initDatabase();
+    httpServer.listen(config.port, () => {
+      console.log(`Server running on port ${config.port}`);
+      console.log(`Socket.io server ready`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
+
+startServer();
