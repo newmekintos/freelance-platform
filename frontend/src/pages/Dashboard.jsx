@@ -20,7 +20,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import Badge from '../components/ui/Badge';
 
 const Dashboard = () => {
-  const { currentUser: user } = useGunAuth();
+  const { currentUser: user, userProfile } = useGunAuth();
   
   // Gun.js P2P - Real-time data
   const { jobs, loading: jobsLoading, getMyJobs } = useGunJobs();
@@ -44,22 +44,23 @@ const Dashboard = () => {
   }
 
   // Freelancer Dashboard
-  if (user.userType === 'freelancer') {
+  if (userProfile?.userType === 'freelancer' || userProfile?.accountType === 'freelancer') {
     return (
       <div className="space-y-8">
         {/* Welcome Header */}
-        <div className="bg-gradient-to-r from-primary via-purple-600 to-pink-600 rounded-2xl p-8 text-white">
-          <div className="flex items-center justify-between">
+        <div className="bg-gradient-to-r from-primary via-purple-600 to-pink-600 rounded-2xl p-4 sm:p-6 md:p-8 text-white">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-2">
-              <h1 className="text-4xl font-bold">Hoş Geldin, {user.name}! 👋</h1>
-              <p className="text-lg opacity-90">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Hoş Geldin, {userProfile?.name || 'Freelancer'}! 👋</h1>
+              <p className="text-sm sm:text-base md:text-lg opacity-90">
                 Freelancer Dashboard'ına hoş geldin. İşte bugünkü özetin.
               </p>
             </div>
-            <Link to="/create?type=service">
-              <Button size="lg" variant="secondary" className="shadow-xl">
-                <Plus className="h-5 w-5 mr-2" />
-                Yeni Servis Ekle
+            <Link to="/create?type=service" className="w-full sm:w-auto">
+              <Button size="sm" variant="secondary" className="shadow-xl w-full sm:w-auto h-9 sm:h-10 text-xs sm:text-sm whitespace-nowrap">
+                <Plus className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Yeni Servis Ekle</span>
+                <span className="inline sm:hidden">Servis Ekle</span>
               </Button>
             </Link>
           </div>
@@ -71,7 +72,7 @@ const Dashboard = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Başvurularım</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Başvurularım</p>
                   <p className="text-3xl font-bold text-primary">{stats.myApplications.length}</p>
                 </div>
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -85,10 +86,10 @@ const Dashboard = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Servislerim</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Servislerim</p>
                   <p className="text-3xl font-bold text-purple-600">{stats.myServices.length}</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
                   <Package className="h-6 w-6 text-purple-600" />
                 </div>
               </div>
@@ -99,10 +100,10 @@ const Dashboard = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Mesajlar</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Mesajlar</p>
                   <p className="text-3xl font-bold text-green-600">{stats.conversations.length}</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
                   <MessageSquare className="h-6 w-6 text-green-600" />
                 </div>
               </div>
@@ -113,13 +114,13 @@ const Dashboard = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Profil</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Profil</p>
                   <p className="text-3xl font-bold text-orange-600">
                     {user.skills?.length || 0}
                   </p>
-                  <p className="text-xs text-muted-foreground">Yetenek</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">Yetenek</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
                   <User className="h-6 w-6 text-orange-600" />
                 </div>
               </div>
@@ -146,7 +147,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               {stats.myApplications.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
+                <div className="text-center py-8 text-gray-600 dark:text-gray-400">
                   <FileText className="h-12 w-12 mx-auto mb-3 opacity-20" />
                   <p>Henüz başvurun yok</p>
                   <Link to="/jobs">
@@ -156,14 +157,14 @@ const Dashboard = () => {
               ) : (
                 <div className="space-y-3">
                   {stats.myApplications.slice(0, 3).map((app) => (
-                    <div key={app.id} className="p-4 border rounded-lg hover:bg-accent transition-colors">
+                    <div key={app.id} className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <h4 className="font-medium">{app.job?.title}</h4>
-                          <p className="text-sm text-muted-foreground line-clamp-1">
+                          <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
                             {app.coverLetter}
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                             {formatDate(app.createdAt)}
                           </p>
                         </div>
@@ -200,7 +201,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               {stats.myServices.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
+                <div className="text-center py-8 text-gray-600 dark:text-gray-400">
                   <Package className="h-12 w-12 mx-auto mb-3 opacity-20" />
                   <p>Henüz servisiniz yok</p>
                   <Link to="/create?type=service">
@@ -210,11 +211,11 @@ const Dashboard = () => {
               ) : (
                 <div className="space-y-3">
                   {stats.myServices.slice(0, 3).map((service) => (
-                    <div key={service.id} className="p-4 border rounded-lg hover:bg-accent transition-colors">
+                    <div key={service.id} className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <h4 className="font-medium">{service.title}</h4>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
                             {service.price || 'Fiyat belirtilmemiş'}
                           </p>
                         </div>
@@ -265,18 +266,19 @@ const Dashboard = () => {
   return (
     <div className="space-y-8">
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 rounded-2xl p-8 text-white">
-        <div className="flex items-center justify-between">
+      <div className="bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 rounded-2xl p-4 sm:p-6 md:p-8 text-white">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-2">
-            <h1 className="text-4xl font-bold">Hoş Geldin, {user.name}! 👋</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Hoş Geldin, {userProfile?.name || 'İş Veren'}! 👋</h1>
+            <p className="text-sm sm:text-base md:text-lg opacity-90">
               İş Veren Dashboard'ına hoş geldin. Projelerini yönet.
             </p>
           </div>
-          <Link to="/create?type=job">
-            <Button size="lg" variant="secondary" className="shadow-xl">
-              <Plus className="h-5 w-5 mr-2" />
-              Yeni İş İlanı Ver
+          <Link to="/create?type=job" className="w-full sm:w-auto">
+            <Button size="sm" variant="secondary" className="shadow-xl w-full sm:w-auto h-9 sm:h-10 text-xs sm:text-sm whitespace-nowrap">
+              <Plus className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Yeni İş İlanı Ver</span>
+              <span className="inline sm:hidden">İlan Ver</span>
             </Button>
           </Link>
         </div>
@@ -288,10 +290,10 @@ const Dashboard = () => {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">İş İlanlarım</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">İş İlanlarım</p>
                 <p className="text-3xl font-bold text-green-600">{stats.myJobs.length}</p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
                 <Briefcase className="h-6 w-6 text-green-600" />
               </div>
             </div>
@@ -302,12 +304,12 @@ const Dashboard = () => {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Aktif İlanlar</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Aktif İlanlar</p>
                 <p className="text-3xl font-bold text-blue-600">
                   {stats.myJobs.filter(j => j.status === 'open').length}
                 </p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
                 <Clock className="h-6 w-6 text-blue-600" />
               </div>
             </div>
@@ -318,10 +320,10 @@ const Dashboard = () => {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Mesajlar</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Mesajlar</p>
                 <p className="text-3xl font-bold text-purple-600">{stats.conversations.length}</p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
                 <MessageSquare className="h-6 w-6 text-purple-600" />
               </div>
             </div>
@@ -332,12 +334,12 @@ const Dashboard = () => {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Tamamlanan</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Tamamlanan</p>
                 <p className="text-3xl font-bold text-orange-600">
                   {stats.myJobs.filter(j => j.status === 'closed').length}
                 </p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
                 <CheckCircle2 className="h-6 w-6 text-orange-600" />
               </div>
             </div>
@@ -364,7 +366,7 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             {stats.myJobs.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-center py-8 text-gray-600 dark:text-gray-400">
                 <Briefcase className="h-12 w-12 mx-auto mb-3 opacity-20" />
                 <p>Henüz iş ilanınız yok</p>
                 <Link to="/create?type=job">
@@ -375,14 +377,14 @@ const Dashboard = () => {
               <div className="space-y-3">
                 {stats.myJobs.slice(0, 3).map((job) => (
                   <Link key={job.id} to={`/jobs/${job.id}`}>
-                    <div className="p-4 border rounded-lg hover:bg-accent transition-colors">
+                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <h4 className="font-medium">{job.title}</h4>
-                          <p className="text-sm text-muted-foreground line-clamp-1">
+                          <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
                             {job.description}
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                             {formatDate(job.createdAt)}
                           </p>
                         </div>
@@ -416,7 +418,7 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             {stats.conversations.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-center py-8 text-gray-600 dark:text-gray-400">
                 <MessageSquare className="h-12 w-12 mx-auto mb-3 opacity-20" />
                 <p>Henüz mesajınız yok</p>
               </div>
@@ -424,7 +426,7 @@ const Dashboard = () => {
               <div className="space-y-3">
                 {stats.conversations.slice(0, 3).map((conv) => (
                   <Link key={conv.id} to={`/messages?conversation=${conv.id}`}>
-                    <div className="p-4 border rounded-lg hover:bg-accent transition-colors">
+                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-white font-bold">
                           {conv.otherUser?.name?.charAt(0).toUpperCase()}
@@ -432,7 +434,7 @@ const Dashboard = () => {
                         <div className="flex-1">
                           <h4 className="font-medium">{conv.otherUser?.name}</h4>
                           {conv.lastMessage && (
-                            <p className="text-sm text-muted-foreground line-clamp-1">
+                            <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
                               {conv.lastMessage.content}
                             </p>
                           )}
