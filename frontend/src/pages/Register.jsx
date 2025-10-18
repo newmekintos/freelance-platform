@@ -117,7 +117,7 @@ const Register = () => {
             {benefits.map((benefit, index) => (
               <div 
                 key={index} 
-                className="flex items-start gap-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 rounded-xl p-4 border border-green-100 dark:border-green-900/30"
+                className="flex items-start gap-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-850 rounded-xl p-4 border border-green-100 dark:border-gray-700"
               >
                 <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
                   {benefit.icon}
@@ -155,7 +155,7 @@ const Register = () => {
           </Card>
 
           {/* Testimonial */}
-          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 dark:from-primary/10 dark:to-purple-950/20 border-primary/20 dark:border-primary/30">
+          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-primary/20 dark:border-gray-700">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-600" />

@@ -174,7 +174,7 @@ const Login = () => {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="flex items-center gap-4 bg-gradient-to-r from-primary/5 to-purple-50 dark:from-primary/10 dark:to-purple-950/20 rounded-xl p-4 border border-primary/10 dark:border-primary/20"
+                className="flex items-center gap-4 bg-gradient-to-r from-primary/5 to-purple-50 dark:from-gray-800 dark:to-gray-850 rounded-xl p-4 border border-primary/10 dark:border-gray-700"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                   {feature.icon}
@@ -185,7 +185,7 @@ const Login = () => {
           </div>
 
           {/* Social Proof */}
-          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 dark:from-primary/10 dark:to-purple-950/20 border-primary/20 dark:border-primary/30">
+          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-primary/20 dark:border-gray-700">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-600" />
