@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Briefcase, 
@@ -13,7 +12,8 @@ import {
   FileText
 } from 'lucide-react';
 import { useGunAuth } from '../context/GunAuthContext';
-import { jobsAPI, servicesAPI, applicationsAPI, messagesAPI } from '../lib/api';
+import { useGunJobs } from '../hooks/useGunJobs';
+import { useGunServices } from '../hooks/useGunServices';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
@@ -21,38 +21,22 @@ import Badge from '../components/ui/Badge';
 
 const Dashboard = () => {
   const { currentUser: user } = useGunAuth();
-  const [stats, setStats] = useState({
-    myJobs: [],
-    myServices: [],
-    myApplications: [],
-    conversations: [],
-  });
-  const [loading, setLoading] = useState(true);
+  
+  // Gun.js P2P - Real-time data
+  const { jobs, loading: jobsLoading, getMyJobs } = useGunJobs();
+  const { services, loading: servicesLoading, getMyServices } = useGunServices();
+  
+  const loading = jobsLoading || servicesLoading;
+  
+  // Get user's own jobs and services
+  const myJobs = user ? getMyJobs() : [];
+  const myServices = user ? getMyServices() : [];
 
-  useEffect(() => {
-    fetchDashboardData();
-  }, [user]);
-
-  const fetchDashboardData = async () => {
-    try {
-      const [jobsRes, servicesRes, applicationsRes, conversationsRes] = await Promise.all([
-        jobsAPI.getAll(),
-        servicesAPI.getAll(),
-        applicationsAPI.getMyApplications(),
-        messagesAPI.getConversations(),
-      ]);
-
-      setStats({
-        myJobs: jobsRes.data.filter(job => job.userId === user.id),
-        myServices: servicesRes.data.filter(service => service.userId === user.id),
-        myApplications: applicationsRes.data,
-        conversations: conversationsRes.data,
-      });
-    } catch (err) {
-      console.error('Dashboard data fetch error:', err);
-    } finally {
-      setLoading(false);
-    }
+  const stats = {
+    myJobs,
+    myServices,
+    myApplications: [], // TODO: Gun.js applications
+    conversations: [], // TODO: Gun.js messages
   };
 
   if (loading) {

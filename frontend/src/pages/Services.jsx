@@ -10,9 +10,9 @@ import {
   Zap,
   Plus
 } from 'lucide-react';
-import { servicesAPI, messagesAPI } from '../lib/api';
 import { useGunAuth } from '../context/GunAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useGunServices } from '../hooks/useGunServices';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
@@ -22,25 +22,9 @@ const Services = () => {
   const { currentUser: user } = useGunAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    fetchServices();
-  }, [location]);
-
-  const fetchServices = async () => {
-    try {
-      setError('');
-      const response = await servicesAPI.getAll();
-      setServices(response.data);
-    } catch (err) {
-      setError('Servisler yüklenirken hata oluştu');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Gun.js P2P - Real-time services
+  const { services, loading } = useGunServices();
+  const [error] = useState('');
 
   const handleContact = async (userId) => {
     if (!user) {

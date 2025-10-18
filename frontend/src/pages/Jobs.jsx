@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Briefcase, 
   Clock, 
@@ -11,33 +11,16 @@ import {
   Search,
   Filter
 } from 'lucide-react';
-import { jobsAPI } from '../lib/api';
+import { useGunJobs } from '../hooks/useGunJobs';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 
 const Jobs = () => {
-  const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const location = useLocation();
-
-  useEffect(() => {
-    fetchJobs();
-  }, [location]); // location değiştiğinde yeniden yükle
-
-  const fetchJobs = async () => {
-    try {
-      setError('');
-      const response = await jobsAPI.getAll();
-      setJobs(response.data);
-    } catch (err) {
-      setError('İş ilanları yüklenirken hata oluştu');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Gun.js P2P - Real-time jobs
+  const { jobs, loading } = useGunJobs();
+  const [error] = useState('');
 
   if (loading) {
     return (

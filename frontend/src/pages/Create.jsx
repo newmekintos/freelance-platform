@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { jobsAPI, servicesAPI } from '../lib/api';
 import { useGunAuth } from '../context/GunAuthContext';
+import { useGunJobs } from '../hooks/useGunJobs';
+import { useGunServices } from '../hooks/useGunServices';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import Textarea from '../components/ui/Textarea';
@@ -11,6 +12,10 @@ const Create = () => {
   const { currentUser: user } = useGunAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  
+  // Gun.js P2P hooks
+  const { createJob } = useGunJobs();
+  const { createService } = useGunServices();
   
   // URL'den type parametresini al (job veya service)
   const typeParam = searchParams.get('type');
@@ -66,7 +71,8 @@ const Create = () => {
         : [];
 
       if (postType === 'job') {
-        await jobsAPI.create({
+        // Gun.js P2P - Create job
+        await createJob({
           title: formData.title,
           description: formData.description,
           category: formData.category,
@@ -75,7 +81,8 @@ const Create = () => {
         });
         navigate('/jobs');
       } else {
-        await servicesAPI.create({
+        // Gun.js P2P - Create service
+        await createService({
           title: formData.title,
           description: formData.description,
           category: formData.category,
