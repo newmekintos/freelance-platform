@@ -51,8 +51,8 @@ const Dashboard = () => {
         <div className="bg-gradient-to-r from-primary via-purple-600 to-pink-600 rounded-2xl p-4 sm:p-6 md:p-8 text-white">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-2">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Hoş Geldin, {userProfile?.name || 'Freelancer'}! 👋</h1>
-              <p className="text-sm sm:text-base md:text-lg opacity-90">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold !text-white">Hoş Geldin, {userProfile?.name || 'Freelancer'}! 👋</h1>
+              <p className="text-sm sm:text-base md:text-lg !text-white/90">
                 Freelancer Dashboard'ına hoş geldin. İşte bugünkü özetin.
               </p>
             </div>
@@ -230,7 +230,7 @@ const Dashboard = () => {
         </div>
 
         {/* Quick Actions */}
-        <Card className="bg-gradient-to-br from-primary/5 to-purple-50">
+        <Card className="bg-gradient-to-br from-primary/10 to-purple-900/10 dark:from-primary/20 dark:to-purple-900/20">
           <CardHeader>
             <CardTitle>Hızlı İşlemler</CardTitle>
             <CardDescription>Platformu keşfetmeye devam edin</CardDescription>
@@ -269,8 +269,8 @@ const Dashboard = () => {
       <div className="bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 rounded-2xl p-4 sm:p-6 md:p-8 text-white">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-2">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Hoş Geldin, {userProfile?.name || 'İş Veren'}! 👋</h1>
-            <p className="text-sm sm:text-base md:text-lg opacity-90">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold !text-white">Hoş Geldin, {userProfile?.name || 'İş Veren'}! 👋</h1>
+            <p className="text-sm sm:text-base md:text-lg !text-white/90">
               İş Veren Dashboard'ına hoş geldin. Projelerini yönet.
             </p>
           </div>
@@ -450,7 +450,7 @@ const Dashboard = () => {
       </div>
 
       {/* Quick Actions */}
-      <Card className="bg-gradient-to-br from-green-50 to-emerald-50">
+      <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
         <CardHeader>
           <CardTitle>Hızlı İşlemler</CardTitle>
           <CardDescription>Platformu etkin kullanın</CardDescription>

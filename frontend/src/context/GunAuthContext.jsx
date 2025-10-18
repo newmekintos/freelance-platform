@@ -18,13 +18,21 @@ export const GunAuthProvider = ({ children }) => {
 
   // Check if user is already logged in
   useEffect(() => {
-    const checkAuth = async () => {
-      const existingUser = user.is;
-      if (existingUser) {
-        setCurrentUser(existingUser);
-        loadUserProfile(existingUser.pub);
-      }
-      setLoading(false);
+    const checkAuth = () => {
+      // Gun.js automatically restores session from localStorage
+      user.recall({ sessionStorage: false }, (ack) => {
+        if (ack.err) {
+          setLoading(false);
+          return;
+        }
+        
+        const existingUser = user.is;
+        if (existingUser) {
+          setCurrentUser(existingUser);
+          loadUserProfile(existingUser.pub);
+        }
+        setLoading(false);
+      });
     };
     checkAuth();
   }, []);
