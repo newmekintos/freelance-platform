@@ -49,24 +49,24 @@ const Login = () => {
   ];
 
   return (
-    <div className="min-h-[calc(100vh-100px)] flex items-center justify-center py-12 px-4">
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+    <div className="min-h-[calc(100vh-100px)] flex items-center justify-center py-6 md:py-12 px-4 sm:px-6">
+      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-6 md:gap-12 items-center">
         {/* Left Side - Form */}
-        <div className="order-2 lg:order-1">
-          <Card className="p-8 shadow-2xl border-2 dark:bg-gray-800 dark:border-gray-700">
+        <div className="order-2 lg:order-1 w-full">
+          <Card className="p-4 sm:p-6 md:p-8 shadow-2xl border-2 dark:bg-gray-800 dark:border-gray-700">
             {/* Header */}
-            <div className="space-y-2 mb-8">
+            <div className="space-y-2 mb-6 md:mb-8">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
-                  <LogIn className="h-6 w-6 text-primary" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                  <LogIn className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
                 <Badge className="bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-foreground border-0">
                   <Sparkles className="h-3 w-3 mr-1" />
                   Hoş Geldiniz
                 </Badge>
               </div>
-              <h1 className="text-4xl font-bold tracking-tight dark:text-white">Tekrar Hoş Geldiniz</h1>
-              <p className="text-lg text-muted-foreground">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight dark:text-white">Tekrar Hoş Geldiniz</h1>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground dark:text-gray-400">
                 Hesabınıza giriş yapın ve projelerinize devam edin
               </p>
             </div>
@@ -91,7 +91,7 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="h-12 text-base"
+                  className="h-10 sm:h-12 text-sm sm:text-base"
                 />
               </div>
 
@@ -106,13 +106,13 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="h-12 text-base"
+                  className="h-10 sm:h-12 text-sm sm:text-base"
                 />
               </div>
 
               <Button 
                 type="submit" 
-                className="w-full h-12 text-base font-semibold shadow-lg hover:shadow-xl transition-all" 
+                className="w-full h-10 sm:h-12 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all" 
                 disabled={loading}
               >
                 {loading ? (
@@ -152,7 +152,7 @@ const Login = () => {
         </div>
 
         {/* Right Side - Marketing */}
-        <div className="order-1 lg:order-2 space-y-8">
+        <div className="hidden lg:block order-1 lg:order-2 space-y-8">
           <div className="space-y-4">
             <Badge className="bg-gradient-to-r from-primary to-purple-600 text-white border-0 px-4 py-2">
               <Sparkles className="h-4 w-4 mr-2" />

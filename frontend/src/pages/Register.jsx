@@ -102,16 +102,16 @@ const Register = () => {
   ];
 
   return (
-    <div className="min-h-[calc(100vh-100px)] flex items-center justify-center py-12 px-4">
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+    <div className="min-h-[calc(100vh-100px)] flex items-center justify-center py-6 md:py-12 px-4 sm:px-6">
+      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-6 md:gap-12 items-center">
         {/* Left Side - Marketing */}
-        <div className="order-2 lg:order-1 space-y-8">
+        <div className="hidden lg:block order-2 lg:order-1 space-y-8">
           <div className="space-y-4">
             <Badge className="bg-gradient-to-r from-green-500 to-emerald-600 text-white border-0 px-4 py-2">
               <Rocket className="h-4 w-4 mr-2" />
               Ücretsiz Başla
             </Badge>
-            <h2 className="text-5xl font-bold leading-tight dark:text-white">
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight dark:text-white">
               Kariyerinize
               <span className="bg-gradient-to-r from-green-500 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {' '}Hemen{' '}
@@ -189,21 +189,21 @@ const Register = () => {
         </div>
 
         {/* Right Side - Form */}
-        <div className="order-1 lg:order-2">
-          <Card className="p-8 shadow-2xl border-2 dark:bg-gray-800 dark:border-gray-700">
+        <div className="order-1 lg:order-2 w-full">
+          <Card className="p-4 sm:p-6 md:p-8 shadow-2xl border-2 dark:bg-gray-800 dark:border-gray-700">
             {/* Header */}
-            <div className="space-y-2 mb-8">
+            <div className="space-y-2 mb-6 md:mb-8">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                  <UserPlus className="h-6 w-6 text-green-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                  <UserPlus className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
                 </div>
-                <Badge className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-0">
+                <Badge className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-0 text-xs sm:text-sm">
                   <Sparkles className="h-3 w-3 mr-1" />
                   Ücretsiz Kayıt
                 </Badge>
               </div>
-              <h1 className="text-4xl font-bold tracking-tight dark:text-white">Hesap Oluştur</h1>
-              <p className="text-lg text-muted-foreground">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight dark:text-white">Hesap Oluştur</h1>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground dark:text-gray-400">
                 30 saniyede ücretsiz hesap oluştur ve hemen başla
               </p>
             </div>
@@ -228,7 +228,7 @@ const Register = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="h-12 text-base"
+                  className="h-10 sm:h-12 text-sm sm:text-base"
                 />
               </div>
 
@@ -244,7 +244,7 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="h-12 text-base"
+                  className="h-10 sm:h-12 text-sm sm:text-base"
                 />
               </div>
 
@@ -260,10 +260,10 @@ const Register = () => {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className="h-12 text-base"
-                  minLength={6}
+                  className="h-10 sm:h-12 text-sm sm:text-base"
+                  minLength={8}
                 />
-                <p className="text-xs text-muted-foreground dark:text-gray-400">En az 6 karakter</p>
+                <p className="text-xs text-muted-foreground dark:text-gray-400">En az 8 karakter (Gun.js gereksinimi)</p>
               </div>
 
               <div className="space-y-3">
@@ -299,7 +299,7 @@ const Register = () => {
 
               <Button 
                 type="submit" 
-                className="w-full h-12 text-base font-semibold bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all" 
+                className="w-full h-10 sm:h-12 text-sm sm:text-base font-semibold bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all" 
                 disabled={loading}
               >
                 {loading ? (
@@ -329,7 +329,7 @@ const Register = () => {
                   Zaten hesabınız var mı?
                 </p>
                 <Link to="/login">
-                  <Button variant="outline" className="w-full h-12 font-semibold">
+                  <Button variant="outline" className="w-full h-10 sm:h-12 text-sm sm:text-base font-semibold">
                     Giriş Yap
                   </Button>
                 </Link>
