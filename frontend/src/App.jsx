@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { SocketProvider } from './context/SocketContext';
+import { useGunAuth } from './context/GunAuthContext';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -14,24 +13,24 @@ import Messages from './pages/Messages';
 import Profile from './pages/Profile';
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+  const { currentUser, loading } = useGunAuth();
   
   if (loading) {
     return <div className="text-center py-12">Yükleniyor...</div>;
   }
   
-  return user ? children : <Navigate to="/login" />;
+  return currentUser ? children : <Navigate to="/login" />;
 };
 
 const PublicRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+  const { currentUser, loading } = useGunAuth();
   
   if (loading) {
     return <div className="text-center py-12">Yükleniyor...</div>;
   }
   
   // Eğer kullanıcı giriş yapmışsa dashboard'a yönlendir
-  return user ? <Navigate to="/dashboard" /> : children;
+  return currentUser ? <Navigate to="/dashboard" /> : children;
 };
 
 function AppRoutes() {
