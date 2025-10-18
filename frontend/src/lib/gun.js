@@ -2,33 +2,21 @@ import Gun from 'gun';
 import 'gun/sea'; // Encryption
 import 'gun/axe'; // Network optimization
 
-// Suppress Gun.js peer connection errors in production
-if (import.meta.env.PROD) {
-  const originalError = console.error;
-  console.error = (...args) => {
-    const message = args[0]?.toString() || '';
-    // Suppress WebSocket/peer connection errors
-    if (message.includes('WebSocket') || 
-        message.includes('peer') || 
-        message.includes('gun')) {
-      return;
-    }
-    originalError.apply(console, args);
-  };
-}
-
 // P2P Gun Database Instance
 // Her kullanıcı bu database'i kendi cihazında çalıştırır
 export const gun = Gun({
-  // Peers: İlk bağlantı için relay sunucuları (opsiyonel)
-  // Platform tamamen localStorage ile çalışır, peers opsiyoneldir
-  peers: [],
-  // Local storage: Browser'da veri sakla (ana veri kaynağı)
+  // Peers: Relay sunucuları - Farklı cihazlar arası sync için ZORUNLU!
+  // Laptop'ta hesap aç → Telefonda giriş yap → Peer sayesinde sync olur
+  peers: [
+    'https://gun-manhattan.herokuapp.com/gun',
+    'https://gunjs.herokuapp.com/gun',
+  ],
+  // Local storage: Browser'da veri sakla
   localStorage: true,
   // IndexedDB: Daha büyük veriler için
   radisk: true,
   // WebRTC: Direkt peer-to-peer bağlantı
-  multicast: false, // Console errors'ı azaltmak için kapalı
+  multicast: true,
 });
 
 // User authentication system
