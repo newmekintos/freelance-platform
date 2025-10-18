@@ -19,27 +19,19 @@ export const GunAuthProvider = ({ children }) => {
   // Check if user is already logged in
   useEffect(() => {
     const checkAuth = () => {
-      // Set a timeout to ensure loading doesn't hang forever
-      const timeoutId = setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-
       // Gun.js automatically restores session from localStorage
-      user.recall({ sessionStorage: false }, (ack) => {
-        clearTimeout(timeoutId);
-        
-        if (ack.err) {
-          setLoading(false);
-          return;
-        }
-        
+      // Try to recall session (this is async but might not callback)
+      user.recall({ sessionStorage: false });
+      
+      // Check immediately if user is already authenticated
+      setTimeout(() => {
         const existingUser = user.is;
         if (existingUser) {
           setCurrentUser(existingUser);
           loadUserProfile(existingUser.pub);
         }
         setLoading(false);
-      });
+      }, 500); // Wait 500ms for Gun to restore session
     };
     checkAuth();
   }, []);
