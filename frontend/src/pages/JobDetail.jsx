@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Briefcase, Clock, DollarSign, User, MessageSquare } from 'lucide-react';
-import { jobsAPI, applicationsAPI, messagesAPI } from '../lib/api';
+import { useGunJobs } from '../hooks/useGunJobs';
 import { useGunAuth } from '../context/GunAuthContext';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
@@ -15,8 +15,11 @@ const JobDetail = () => {
   const { currentUser: user } = useGunAuth();
   const navigate = useNavigate();
   
-  const [job, setJob] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // Gun.js P2P
+  const { jobs, applyToJob } = useGunJobs();
+  const job = jobs.find(j => j.id === id);
+  const loading = !job;
+  
   const [error, setError] = useState('');
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [applicationData, setApplicationData] = useState({
@@ -25,31 +28,14 @@ const JobDetail = () => {
   });
   const [submitting, setSubmitting] = useState(false);
 
-  useEffect(() => {
-    fetchJob();
-  }, [id]);
-
-  const fetchJob = async () => {
-    try {
-      const response = await jobsAPI.getById(id);
-      setJob(response.data);
-    } catch (err) {
-      setError('İş ilanı yüklenirken hata oluştu');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleApply = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setError('');
 
     try {
-      await applicationsAPI.create({
-        jobId: id,
-        ...applicationData,
-      });
+      // Gun.js P2P - Apply to job
+      await applyToJob(id, applicationData);
       alert('Başvurunuz gönderildi!');
       setShowApplicationForm(false);
       setApplicationData({ coverLetter: '', proposedBudget: '' });
@@ -60,13 +46,10 @@ const JobDetail = () => {
     }
   };
 
-  const handleContactUser = async () => {
-    try {
-      const response = await messagesAPI.createConversation(job.user.id);
-      navigate(`/messages?conversation=${response.data.id}`);
-    } catch (err) {
-      alert('Konuşma başlatılırken hata oluştu');
-    }
+  const handleContactUser = () => {
+    if (!job || !job.createdBy) return;
+    // TODO: Gun.js P2P messaging
+    navigate(`/messages?user=${job.createdBy}`);
   };
 
   if (loading) {

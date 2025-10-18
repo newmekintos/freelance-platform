@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { MessageSquare, Send } from 'lucide-react';
-import { messagesAPI } from '../lib/api';
+// TODO: Convert to Gun.js P2P
+// import { messagesAPI } from '../lib/api';
 import { useGunAuth } from '../context/GunAuthContext';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';

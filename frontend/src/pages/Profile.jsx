@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { User, Briefcase, Package, MessageCircle } from 'lucide-react';
-import { usersAPI, jobsAPI, servicesAPI, messagesAPI } from '../lib/api';
+// TODO: Convert to Gun.js P2P
 import { useGunAuth } from '../context/GunAuthContext';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';

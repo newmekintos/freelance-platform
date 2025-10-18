@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Package, 
   Clock, 
@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { useGunAuth } from '../context/GunAuthContext';
 import { useGunServices } from '../hooks/useGunServices';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
@@ -26,18 +25,15 @@ const Services = () => {
   const { services, loading } = useGunServices();
   const [error] = useState('');
 
-  const handleContact = async (userId) => {
+  const handleContact = (userId) => {
     if (!user) {
       navigate('/login');
       return;
     }
     
-    try {
-      const response = await messagesAPI.createConversation(userId);
-      navigate(`/messages?conversation=${response.data.id}`);
-    } catch (err) {
-      alert('Konuşma başlatılırken hata oluştu');
-    }
+    // TODO: Gun.js P2P messaging
+    // For now, redirect to messages page
+    navigate(`/messages?user=${userId}`);
   };
 
   if (loading) {
