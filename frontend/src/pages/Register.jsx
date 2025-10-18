@@ -46,10 +46,21 @@ const Register = () => {
     setLoading(true);
 
     try {
-      await register(formData);
+      // Gun.js P2P registration
+      await register(
+        formData.email,           // username (email as ID)
+        formData.password,        // password
+        {
+          name: formData.name,
+          email: formData.email,
+          accountType: formData.accountType,
+          bio: '',
+          skills: '',
+        }
+      );
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Kayıt olurken bir hata oluştu');
+      setError(err.message || 'Kayıt olurken bir hata oluştu');
     } finally {
       setLoading(false);
     }

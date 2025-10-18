@@ -32,10 +32,11 @@ const Login = () => {
     setLoading(true);
 
     try {
-      await login({ email, password });
+      // Gun.js P2P login
+      await login(email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Giriş yapılırken bir hata oluştu');
+      setError(err.message || 'Giriş yapılırken bir hata oluştu');
     } finally {
       setLoading(false);
     }
