@@ -1,35 +1,41 @@
 # 🌐 Web3 Decentralized Freelance Platform
 
-**Tamamen merkeziyetsiz**, sansür edilemez, blockchain tabanlı freelance marketplace. Merkezi sunucu, database veya otorite yok - her kullanıcı kendi verilerini kontrol eder.
+**100% merkeziyetsiz**, sansür edilemez, P2P freelance marketplace. Merkezi sunucu, database veya otorite yok - her kullanıcı kendi verilerini kontrol eder.
 
-## ⚡ Hızlı Başlangıç
+## 🌍 Live Platform
+
+**Production (4EVERLAND):**
+```
+🌐 https://freelance-platform-wflk.4everland.app/
+
+Hosted on: Arweave + IPFS
+Permanent: 200+ years
+Cost: $0/month forever
+```
+
+## ⚡ Local Development
 
 ```bash
-# Tek komutla her şeyi başlat
+cd frontend
+npm install
 npm run dev
 ```
 
-Backend: http://localhost:5000  
-Frontend: http://localhost:5173
+Local: http://localhost:5173
 
-## 🌍 Canlı Demo (IPFS)
+## 🚀 Deployment
 
-**Live on IPFS:**
-```
-https://ipfs.io/ipfs/QmSRdZtufsFxs2NVy8gvDbeamuigwXUn7GE8MfoKA2cRz8
-https://dweb.link/ipfs/QmSRdZtufsFxs2NVy8gvDbeamuigwXUn7GE8MfoKA2cRz8
-```
-
-🌐 **Tamamen Decentralized** - Merkezi sunucu yok!
-
-## 📦 Kurulum
-
+**Otomatik deployment (4EVERLAND):**
 ```bash
-# Tüm bağımlılıkları yükle
-npm run install:all
+git add .
+git commit -m "feature: new feature"
+git push
 
-# Development modda çalıştır
-npm run dev
+# 4EVERLAND otomatik:
+# 1. Build yapar
+# 2. IPFS'e deploy eder
+# 3. Arweave'e backup yapar
+# 4. 2-3 dakika sonra live!
 ```
 
 ## ✨ Web3 Özellikler
@@ -46,8 +52,11 @@ npm run dev
 - ✅ **Multi-Chain Support**: Ethereum, Polygon, BSC
 - ✅ **Zero Commission**: Aracı yok, direkt ödemeler
 
-### 🌐 IPFS Hosting
-- ✅ **Decentralized Hosting**: IPFS network
+### 🌐 Decentralized Hosting
+- ✅ **4EVERLAND**: Otomatik IPFS + Arweave deployment
+- ✅ **Permanent Storage**: 200+ yıl Arweave backup
+- ✅ **Global CDN**: Hızlı erişim her yerden
+- ✅ **No Downtime**: Peer-to-peer distribution
 - ✅ **Permanent Storage**: NFT.Storage/Filecoin
 - ✅ **ENS Domains**: Web3 domain desteği
 - ✅ **$0 Cost**: Tamamen bedava hosting
@@ -71,33 +80,13 @@ npm run dev
 - **React 18** - UI framework
 - **Vite** - Build tool
 - **TailwindCSS** - Styling
-- **React Router v6** - Navigation
+- **React Router v6** - Navigation (HashRouter for IPFS)
 
-## 🚀 IPFS Deployment
-
-### Otomatik Deploy:
-```bash
-./deploy-ipfs.sh
-```
-
-### Manuel Deploy:
-```bash
-# Build
-cd frontend
-npm run build
-
-# IPFS'e yükle
-~/.local/bin/ipfs add -r dist/
-
-# CID al ve eriş
-# https://ipfs.io/ipfs/YOUR_CID
-```
-
-### Kalıcı Storage (Önerilen):
-```bash
-# NFT.Storage (Bedava, Kalıcı)
-npx @nft-storage/cli upload frontend/dist/ --token YOUR_TOKEN
-```
+### Hosting
+- **4EVERLAND** - Otomatik CI/CD + IPFS + Arweave
+- **Arweave** - Permanent storage (200+ years)
+- **IPFS** - Decentralized distribution
+- **GitHub Actions** - Otomatik deployment trigger
 
 📚 **Detaylı rehber:** [IPFS-DEPLOYMENT.md](./IPFS-DEPLOYMENT.md)
 
