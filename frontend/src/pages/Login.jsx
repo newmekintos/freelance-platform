@@ -11,7 +11,7 @@ import {
   Users,
   MessageSquare
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useGunAuth } from '../context/GunAuthContext';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import { Card } from '../components/ui/Card';
@@ -23,7 +23,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { login } = useAuth();
+  const { login } = useGunAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {

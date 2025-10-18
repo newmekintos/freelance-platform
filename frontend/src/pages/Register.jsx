@@ -14,7 +14,7 @@ import {
   Briefcase,
   Rocket
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useGunAuth } from '../context/GunAuthContext';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import { Card } from '../components/ui/Card';
@@ -30,7 +30,7 @@ const Register = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { register } = useAuth();
+  const { register } = useGunAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {

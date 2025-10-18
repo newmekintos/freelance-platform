@@ -11,7 +11,7 @@ import {
   Plus
 } from 'lucide-react';
 import { servicesAPI, messagesAPI } from '../lib/api';
-import { useAuth } from '../context/AuthContext';
+import { useGunAuth } from '../context/GunAuthContext';
 import { useNavigate } from 'react-router-dom';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
@@ -19,7 +19,7 @@ import { Card, CardContent } from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 
 const Services = () => {
-  const { user } = useAuth();
+  const { currentUser: user } = useGunAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [services, setServices] = useState([]);

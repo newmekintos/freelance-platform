@@ -12,7 +12,7 @@ import {
   User,
   FileText
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useGunAuth } from '../context/GunAuthContext';
 import { jobsAPI, servicesAPI, applicationsAPI, messagesAPI } from '../lib/api';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
@@ -20,7 +20,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import Badge from '../components/ui/Badge';
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { currentUser: user } = useGunAuth();
   const [stats, setStats] = useState({
     myJobs: [],
     myServices: [],

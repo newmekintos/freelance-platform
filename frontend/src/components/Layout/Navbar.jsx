@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Briefcase, User, MessageSquare, LogOut, Plus, Moon, Sun } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useGunAuth } from '../../context/GunAuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import Button from '../ui/Button';
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { currentUser: user, logout } = useGunAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 

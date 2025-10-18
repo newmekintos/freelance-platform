@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { User, Briefcase, Package, MessageCircle } from 'lucide-react';
 import { usersAPI, jobsAPI, servicesAPI, messagesAPI } from '../lib/api';
-import { useAuth } from '../context/AuthContext';
+import { useGunAuth } from '../context/GunAuthContext';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import Textarea from '../components/ui/Textarea';
@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import Badge from '../components/ui/Badge';
 
 const Profile = () => {
-  const { user, updateUser } = useAuth();
+  const { currentUser: user, updateProfile: updateUser } = useGunAuth();
   const navigate = useNavigate();
   const { userId } = useParams();
   

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Briefcase, Clock, DollarSign, User, MessageSquare } from 'lucide-react';
 import { jobsAPI, applicationsAPI, messagesAPI } from '../lib/api';
-import { useAuth } from '../context/AuthContext';
+import { useGunAuth } from '../context/GunAuthContext';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
 import Textarea from '../components/ui/Textarea';
@@ -12,7 +12,7 @@ import Badge from '../components/ui/Badge';
 
 const JobDetail = () => {
   const { id } = useParams();
-  const { user } = useAuth();
+  const { currentUser: user } = useGunAuth();
   const navigate = useNavigate();
   
   const [job, setJob] = useState(null);

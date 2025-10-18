@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { MessageSquare, Send } from 'lucide-react';
 import { messagesAPI } from '../lib/api';
-import { useAuth } from '../context/AuthContext';
-import { useSocket } from '../context/SocketContext';
+import { useGunAuth } from '../context/GunAuthContext';
 import { formatDate } from '../lib/utils';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
@@ -11,8 +10,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card'
 
 const Messages = () => {
   const [searchParams] = useSearchParams();
-  const { user } = useAuth();
-  const { socket } = useSocket();
+  const { currentUser: user } = useGunAuth();
+  // Socket removed - P2P mode uses Gun.js
   
   const [conversations, setConversations] = useState([]);
   const [selectedConversation, setSelectedConversation] = useState(null);
