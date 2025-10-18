@@ -40,3 +40,7 @@ Thumbs.db
 kubo/
 kubo_v0.24.0_linux-amd64.tar.gz
 .last-ipfs-cid
+
+# Pinata API Keys
+.pinata.env
+dist.tar.gz
