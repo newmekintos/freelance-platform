@@ -4,6 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  base: './', // IPFS için relative path gerekli
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

@@ -49,21 +49,14 @@ CID=$(cat .last-ipfs-cid)
 echo -e "${BLUE}📦 CID: $CID${NC}"
 echo ""
 
-# Create tar of dist folder
-echo -e "${YELLOW}📦 Dist folder arşivleniyor...${NC}"
-cd frontend
-tar -czf ../dist.tar.gz dist/
-cd ..
-echo -e "${GREEN}✅ Arşiv hazır!${NC}"
-echo ""
+# Pin existing IPFS hash to Pinata (pinByHash)
+echo -e "${YELLOW}📌 IPFS hash Pinata'ya pin ediliyor...${NC}"
 
-# Pin to Pinata
-echo -e "${YELLOW}📌 Pinata'ya yükleniyor...${NC}"
-
-RESPONSE=$(curl -X POST "https://api.pinata.cloud/pinning/pinFileToIPFS" \
+RESPONSE=$(curl -X POST "https://api.pinata.cloud/pinning/pinByHash" \
+  -H "Content-Type: application/json" \
   -H "pinata_api_key: $PINATA_API_KEY" \
   -H "pinata_secret_api_key: $PINATA_SECRET_KEY" \
-  -F "file=@dist.tar.gz" \
+  -d "{\"hashToPin\":\"$CID\",\"pinataMetadata\":{\"name\":\"Freelance Platform\"}}" \
   -s)
 
 echo ""
@@ -90,9 +83,6 @@ else
     echo "Response:"
     echo "$RESPONSE"
 fi
-
-# Cleanup
-rm dist.tar.gz
 
 echo ""
 echo -e "${GREEN}🎉 İşlem tamamlandı!${NC}"
