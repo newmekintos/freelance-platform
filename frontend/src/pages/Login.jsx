@@ -52,19 +52,19 @@ const Login = () => {
       <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Side - Form */}
         <div className="order-2 lg:order-1">
-          <Card className="p-8 shadow-2xl border-2">
+          <Card className="p-8 shadow-2xl border-2 dark:bg-gray-800 dark:border-gray-700">
             {/* Header */}
             <div className="space-y-2 mb-8">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
                   <LogIn className="h-6 w-6 text-primary" />
                 </div>
-                <Badge className="bg-primary/10 text-primary border-0">
+                <Badge className="bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-foreground border-0">
                   <Sparkles className="h-3 w-3 mr-1" />
                   Hoş Geldiniz
                 </Badge>
               </div>
-              <h1 className="text-4xl font-bold tracking-tight">Tekrar Hoş Geldiniz</h1>
+              <h1 className="text-4xl font-bold tracking-tight dark:text-white">Tekrar Hoş Geldiniz</h1>
               <p className="text-lg text-muted-foreground">
                 Hesabınıza giriş yapın ve projelerinize devam edin
               </p>
@@ -80,7 +80,7 @@ const Login = () => {
               )}
               
               <div className="space-y-2">
-                <label className="text-sm font-semibold flex items-center gap-2">
+                <label className="text-sm font-semibold flex items-center gap-2 dark:text-gray-200">
                   <Mail className="h-4 w-4 text-primary" />
                   Email Adresiniz
                 </label>
@@ -95,7 +95,7 @@ const Login = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold flex items-center gap-2">
+                <label className="text-sm font-semibold flex items-center gap-2 dark:text-gray-200">
                   <Lock className="h-4 w-4 text-primary" />
                   Şifreniz
                 </label>
@@ -129,10 +129,10 @@ const Login = () => {
 
               <div className="relative my-6">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200" />
+                  <div className="w-full border-t border-gray-200 dark:border-gray-700" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white text-muted-foreground">veya</span>
+                  <span className="px-4 bg-white dark:bg-gray-800 text-muted-foreground dark:text-gray-400">veya</span>
                 </div>
               </div>
 
@@ -157,7 +157,7 @@ const Login = () => {
               <Sparkles className="h-4 w-4 mr-2" />
               Freelance Platform
             </Badge>
-            <h2 className="text-5xl font-bold leading-tight">
+            <h2 className="text-5xl font-bold leading-tight dark:text-white">
               Kariyerinizi Bir Sonraki
               <span className="bg-gradient-to-r from-primary via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 {' '}Seviyeye{' '}
@@ -174,24 +174,24 @@ const Login = () => {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="flex items-center gap-4 bg-gradient-to-r from-primary/5 to-purple-50 rounded-xl p-4 border border-primary/10"
+                className="flex items-center gap-4 bg-gradient-to-r from-primary/5 to-purple-50 dark:from-primary/10 dark:to-purple-950/20 rounded-xl p-4 border border-primary/10 dark:border-primary/20"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                   {feature.icon}
                 </div>
-                <span className="font-medium text-lg">{feature.text}</span>
+                <span className="font-medium text-lg dark:text-gray-200">{feature.text}</span>
               </div>
             ))}
           </div>
 
           {/* Social Proof */}
-          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 border-primary/20">
+          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 dark:from-primary/10 dark:to-purple-950/20 border-primary/20 dark:border-primary/30">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-600" />
-                <span className="font-semibold">Güvenilir Platform</span>
+                <span className="font-semibold dark:text-gray-200">Güvenilir Platform</span>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground dark:text-gray-400">
                 "Freelance Platform sayesinde kariyerime yön verdim. Harika projeler, güvenilir müşteriler ve hızlı ödemeler!"
               </p>
               <div className="flex items-center gap-3">
@@ -199,8 +199,8 @@ const Login = () => {
                   AY
                 </div>
                 <div>
-                  <div className="font-semibold text-sm">Ahmet Yılmaz</div>
-                  <div className="text-xs text-muted-foreground">Senior Developer</div>
+                  <div className="font-semibold text-sm dark:text-gray-200">Ahmet Yılmaz</div>
+                  <div className="text-xs text-muted-foreground dark:text-gray-400">Senior Developer</div>
                 </div>
               </div>
             </div>

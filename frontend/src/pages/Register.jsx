@@ -100,7 +100,7 @@ const Register = () => {
               <Rocket className="h-4 w-4 mr-2" />
               Ücretsiz Başla
             </Badge>
-            <h2 className="text-5xl font-bold leading-tight">
+            <h2 className="text-5xl font-bold leading-tight dark:text-white">
               Kariyerinize
               <span className="bg-gradient-to-r from-green-500 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {' '}Hemen{' '}
@@ -117,21 +117,21 @@ const Register = () => {
             {benefits.map((benefit, index) => (
               <div 
                 key={index} 
-                className="flex items-start gap-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border border-green-100"
+                className="flex items-start gap-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 rounded-xl p-4 border border-green-100 dark:border-green-900/30"
               >
-                <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
                   {benefit.icon}
                 </div>
                 <div>
-                  <div className="font-semibold text-lg">{benefit.title}</div>
-                  <div className="text-sm text-muted-foreground">{benefit.text}</div>
+                  <div className="font-semibold text-lg dark:text-gray-200">{benefit.title}</div>
+                  <div className="text-sm text-muted-foreground dark:text-gray-400">{benefit.text}</div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Stats */}
-          <Card className="p-6 bg-gradient-to-br from-green-500 to-emerald-600 border-0 text-white">
+          <Card className="p-6 bg-gradient-to-br from-green-500 to-emerald-600 dark:from-green-600 dark:to-emerald-700 border-0 text-white">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5" />
@@ -155,13 +155,13 @@ const Register = () => {
           </Card>
 
           {/* Testimonial */}
-          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 border-primary/20">
+          <Card className="p-6 bg-gradient-to-br from-primary/5 to-purple-50 dark:from-primary/10 dark:to-purple-950/20 border-primary/20 dark:border-primary/30">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-600" />
-                <span className="font-semibold">Başarı Hikayesi</span>
+                <span className="font-semibold dark:text-gray-200">Başarı Hikayesi</span>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground dark:text-gray-400">
                 "İlk gün kayıt oldum, ertesi gün ilk işimi buldum. Platform gerçekten çok basit ve etkili!"
               </p>
               <div className="flex items-center gap-3">
@@ -169,8 +169,8 @@ const Register = () => {
                   MK
                 </div>
                 <div>
-                  <div className="font-semibold text-sm">Mehmet Kaya</div>
-                  <div className="text-xs text-muted-foreground">UI/UX Designer</div>
+                  <div className="font-semibold text-sm dark:text-gray-200">Mehmet Kaya</div>
+                  <div className="text-xs text-muted-foreground dark:text-gray-400">UI/UX Designer</div>
                 </div>
               </div>
             </div>
@@ -179,19 +179,19 @@ const Register = () => {
 
         {/* Right Side - Form */}
         <div className="order-1 lg:order-2">
-          <Card className="p-8 shadow-2xl border-2">
+          <Card className="p-8 shadow-2xl border-2 dark:bg-gray-800 dark:border-gray-700">
             {/* Header */}
             <div className="space-y-2 mb-8">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
                   <UserPlus className="h-6 w-6 text-green-600" />
                 </div>
-                <Badge className="bg-green-100 text-green-700 border-0">
+                <Badge className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-0">
                   <Sparkles className="h-3 w-3 mr-1" />
                   Ücretsiz Kayıt
                 </Badge>
               </div>
-              <h1 className="text-4xl font-bold tracking-tight">Hesap Oluştur</h1>
+              <h1 className="text-4xl font-bold tracking-tight dark:text-white">Hesap Oluştur</h1>
               <p className="text-lg text-muted-foreground">
                 30 saniyede ücretsiz hesap oluştur ve hemen başla
               </p>
@@ -207,7 +207,7 @@ const Register = () => {
               )}
               
               <div className="space-y-2">
-                <label className="text-sm font-semibold flex items-center gap-2">
+                <label className="text-sm font-semibold flex items-center gap-2 dark:text-gray-200">
                   <User className="h-4 w-4 text-green-600" />
                   Adınız Soyadınız
                 </label>
@@ -222,7 +222,7 @@ const Register = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold flex items-center gap-2">
+                <label className="text-sm font-semibold flex items-center gap-2 dark:text-gray-200">
                   <Mail className="h-4 w-4 text-green-600" />
                   Email Adresiniz
                 </label>
@@ -238,7 +238,7 @@ const Register = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold flex items-center gap-2">
+                <label className="text-sm font-semibold flex items-center gap-2 dark:text-gray-200">
                   <Lock className="h-4 w-4 text-green-600" />
                   Şifre Belirleyin
                 </label>
@@ -252,11 +252,11 @@ const Register = () => {
                   className="h-12 text-base"
                   minLength={6}
                 />
-                <p className="text-xs text-muted-foreground">En az 6 karakter</p>
+                <p className="text-xs text-muted-foreground dark:text-gray-400">En az 6 karakter</p>
               </div>
 
               <div className="space-y-3">
-                <label className="text-sm font-semibold">Hesap Tipi Seçin</label>
+                <label className="text-sm font-semibold dark:text-gray-200">Hesap Tipi Seçin</label>
                 <div className="grid grid-cols-1 gap-3">
                   {userTypeOptions.map((option) => (
                     <button
@@ -265,8 +265,8 @@ const Register = () => {
                       onClick={() => setFormData({ ...formData, userType: option.value })}
                       className={`relative p-4 rounded-xl border-2 text-left transition-all ${
                         formData.userType === option.value
-                          ? 'border-green-500 bg-green-50'
-                          : 'border-gray-200 hover:border-green-200 hover:bg-green-50/50'
+                          ? 'border-green-500 bg-green-50 dark:bg-green-900/20 dark:border-green-600'
+                          : 'border-gray-200 dark:border-gray-700 hover:border-green-200 dark:hover:border-green-700 hover:bg-green-50/50 dark:hover:bg-green-900/10'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -274,8 +274,8 @@ const Register = () => {
                           {option.icon}
                         </div>
                         <div className="flex-1">
-                          <div className="font-semibold text-base">{option.label}</div>
-                          <div className="text-sm text-muted-foreground">{option.description}</div>
+                          <div className="font-semibold text-base dark:text-gray-200">{option.label}</div>
+                          <div className="text-sm text-muted-foreground dark:text-gray-400">{option.description}</div>
                         </div>
                         {formData.userType === option.value && (
                           <CheckCircle2 className="h-6 w-6 text-green-600" />
@@ -306,10 +306,10 @@ const Register = () => {
 
               <div className="relative my-6">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200" />
+                  <div className="w-full border-t border-gray-200 dark:border-gray-700" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white text-muted-foreground">veya</span>
+                  <span className="px-4 bg-white dark:bg-gray-800 text-muted-foreground dark:text-gray-400">veya</span>
                 </div>
               </div>
 
