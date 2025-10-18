@@ -1,6 +1,6 @@
-# 🚀 Freelance Platform
+# 🌐 Web3 Decentralized Freelance Platform
 
-Modern, hızlı ve kullanıcı dostu bir freelance platformu. İş verenler ve freelancerlar için KYC, ödeme sistemi gibi karmaşık süreçler olmadan direkt bağlantı kurmayı sağlar.
+**Tamamen merkeziyetsiz**, sansür edilemez, blockchain tabanlı freelance marketplace. Merkezi sunucu, database veya otorite yok - her kullanıcı kendi verilerini kontrol eder.
 
 ## ⚡ Hızlı Başlangıç
 
@@ -12,9 +12,15 @@ npm run dev
 Backend: http://localhost:5000  
 Frontend: http://localhost:5173
 
-## 🌍 Canlı Demo
+## 🌍 Canlı Demo (IPFS)
 
-**Yakında:** Platform Railway'de deploy edilecek!
+**Live on IPFS:**
+```
+https://ipfs.io/ipfs/QmSRdZtufsFxs2NVy8gvDbeamuigwXUn7GE8MfoKA2cRz8
+https://dweb.link/ipfs/QmSRdZtufsFxs2NVy8gvDbeamuigwXUn7GE8MfoKA2cRz8
+```
+
+🌐 **Tamamen Decentralized** - Merkezi sunucu yok!
 
 ## 📦 Kurulum
 
@@ -26,134 +32,140 @@ npm run install:all
 npm run dev
 ```
 
-## Özellikler
+## ✨ Web3 Özellikler
 
-- ✅ **Basit Kayıt ve Giriş**: KYC olmadan hızlı hesap oluşturma
-- ✅ **İş İlanları**: İş verenler kolayca ilan verebilir, freelancerlar başvurabilir
-- ✅ **Freelancer Servisleri**: Freelancerlar kendi hizmetlerini listeleyebilir
-- ✅ **Başvuru Sistemi**: Freelancerlar iş ilanlarına başvuru yapabilir
-- ✅ **Gerçek Zamanlı Chat**: Socket.io ile anlık mesajlaşma
-- ✅ **Profil Yönetimi**: Kullanıcılar profillerini düzenleyebilir
-- ✅ **Modern UI**: React + TailwindCSS + shadcn/ui tarzı bileşenler
+### 🔒 Decentralization
+- ✅ **Merkezi Sunucu YOK**: Tam P2P network
+- ✅ **Database YOK**: Gun.js distributed database
+- ✅ **Sansür Edilemez**: Kimse kapatamaز
+- ✅ **Self-Hosted Data**: Her kullanıcı kendi verilerini barındırır
 
-## Teknoloji Stack
+### 💰 Crypto Payments
+- ✅ **MetaMask Integration**: Web3 wallet bağlantısı
+- ✅ **ETH Payments**: Kripto ödemeler
+- ✅ **Multi-Chain Support**: Ethereum, Polygon, BSC
+- ✅ **Zero Commission**: Aracı yok, direkt ödemeler
 
-### Backend
-- Node.js + Express
-- Socket.io (Gerçek zamanlı mesajlaşma)
-- JWT (Kimlik doğrulama)
-- JSON dosya tabanlı veritabanı
+### 🌐 IPFS Hosting
+- ✅ **Decentralized Hosting**: IPFS network
+- ✅ **Permanent Storage**: NFT.Storage/Filecoin
+- ✅ **ENS Domains**: Web3 domain desteği
+- ✅ **$0 Cost**: Tamamen bedava hosting
+
+### 🔐 Security & Privacy
+- ✅ **End-to-End Encryption**: Mesajlar şifreli
+- ✅ **Self-Sovereign Identity**: Kendi kimliğini kontrol et
+- ✅ **No Data Collection**: Hiçbir veri toplanmaz
+- ✅ **Cryptographic Auth**: Private/public key sistemi
+
+## 🛠️ Teknoloji Stack
+
+### Web3 Layer
+- **Gun.js** - Decentralized P2P database
+- **Ethers.js** - Ethereum/Web3 library
+- **MetaMask** - Crypto wallet integration
+- **IPFS** - Decentralized file storage
+- **WebRTC** - P2P connections
 
 ### Frontend
-- React 18
-- Vite
-- React Router v6
-- TailwindCSS
-- Socket.io Client
-- Axios
-- Lucide Icons
+- **React 18** - UI framework
+- **Vite** - Build tool
+- **TailwindCSS** - Styling
+- **React Router v6** - Navigation
 
-## Kurulum
+## 🚀 IPFS Deployment
 
-### Backend
-
+### Otomatik Deploy:
 ```bash
-cd backend
-npm install
-npm run dev
+./deploy-ipfs.sh
 ```
 
-Backend http://localhost:5000 adresinde çalışacaktır.
-
-### Frontend
-
+### Manuel Deploy:
 ```bash
+# Build
 cd frontend
-npm install
-npm run dev
+npm run build
+
+# IPFS'e yükle
+~/.local/bin/ipfs add -r dist/
+
+# CID al ve eriş
+# https://ipfs.io/ipfs/YOUR_CID
 ```
 
-Frontend http://localhost:5173 adresinde çalışacaktır.
-
-## Kullanım
-
-1. **Kayıt Ol**: İş veren veya freelancer olarak hesap oluşturun
-2. **İlan Ver**: 
-   - İş verenler iş ilanı verebilir
-   - Freelancerlar kendi servislerini listeleyebilir
-3. **Başvur/İletişim**: 
-   - Freelancerlar iş ilanlarına başvurabilir
-   - Herkes mesajlaşma ile iletişime geçebilir
-4. **Mesajlaş**: Gerçek zamanlı chat ile direkt iletişim
-
-## Proje Yapısı
-
-```
-freelance-platform/
-├── backend/
-│   ├── routes/          # API rotaları
-│   ├── middleware/      # Middleware'ler
-│   ├── data/           # JSON veritabanı
-│   ├── database.js     # Veritabanı yönetimi
-│   ├── config.js       # Yapılandırma
-│   └── server.js       # Ana sunucu dosyası
-│
-└── frontend/
-    ├── src/
-    │   ├── components/  # UI bileşenleri
-    │   ├── context/    # React Context'ler
-    │   ├── lib/        # Yardımcı fonksiyonlar
-    │   ├── pages/      # Sayfa bileşenleri
-    │   ├── App.jsx     # Ana uygulama
-    │   └── main.jsx    # Giriş noktası
-    └── index.html
+### Kalıcı Storage (Önerilen):
+```bash
+# NFT.Storage (Bedava, Kalıcı)
+npx @nft-storage/cli upload frontend/dist/ --token YOUR_TOKEN
 ```
 
-## API Endpoints
+📚 **Detaylı rehber:** [IPFS-DEPLOYMENT.md](./IPFS-DEPLOYMENT.md)
 
-### Auth
-- `POST /api/auth/register` - Kayıt ol
-- `POST /api/auth/login` - Giriş yap
+## 📖 Kullanım
 
-### Jobs
-- `GET /api/jobs` - Tüm iş ilanları
-- `GET /api/jobs/:id` - Tek iş ilanı
-- `POST /api/jobs` - Yeni iş ilanı
-- `PUT /api/jobs/:id` - İş ilanı güncelle
-- `DELETE /api/jobs/:id` - İş ilanı sil
+### 1. MetaMask Kur
+```
+chrome.google.com/webstore → MetaMask → Install
+```
 
-### Services
-- `GET /api/services` - Tüm servisler
-- `GET /api/services/:id` - Tek servis
-- `POST /api/services` - Yeni servis
-- `PUT /api/services/:id` - Servis güncelle
-- `DELETE /api/services/:id` - Servis sil
+### 2. Test ETH Al (Testnet)
+```
+sepoliafaucet.com → Test ETH al
+```
 
-### Messages
-- `GET /api/messages/conversations` - Konuşmalar
-- `GET /api/messages/conversations/:id` - Mesajlar
-- `POST /api/messages/conversations` - Yeni konuşma
-- `POST /api/messages/send` - Mesaj gönder
+### 3. Cüzdan Bağla
+- "Cüzdan Bağla" butonuna tıkla
+- MetaMask'ta onayla
 
-## Socket.io Events
+### 4. Platform Kullan
+1. **Kayıt Ol** - P2P kimlik oluştur
+2. **İlan Ver** - Decentralized database'e yayınla
+3. **Başvur** - P2P network'te başvuru
+4. **Mesajlaş** - End-to-end encrypted chat
+5. **Öde** - ETH ile direkt ödeme
 
-- `join_conversation` - Konuşmaya katıl
-- `send_message` - Mesaj gönder
-- `new_message` - Yeni mesaj (server)
-- `typing` - Yazıyor göstergesi
+## 📚 Dokümantasyon
 
-## Notlar
+- **[WEB3-PLATFORM.md](./WEB3-PLATFORM.md)** - Web3 özellikleri ve mimari
+- **[P2P-MODE.md](./P2P-MODE.md)** - P2P network detayları
+- **[IPFS-DEPLOYMENT.md](./IPFS-DEPLOYMENT.md)** - IPFS deployment rehberi
 
-- Bu platform basitlik için tasarlanmıştır
-- Ödeme entegrasyonu yoktur
-- KYC süreci yoktur
-- Veritabanı JSON dosyaları ile çalışır (production için uygun değil)
-- Production'a almadan önce:
-  - Gerçek bir veritabanı kullanın (MongoDB, PostgreSQL vb.)
-  - JWT secret'ını değiştirin
-  - CORS ayarlarını yapılandırın
-  - Rate limiting ekleyin
-  - Input validation güçlendirin
+## 🌟 Özellikler
+
+### ✅ Şu An Aktif:
+- Decentralized P2P database (Gun.js)
+- MetaMask wallet entegrasyonu
+- IPFS hosting
+- End-to-end encrypted messaging
+- Crypto payments ready
+- Dark/Light theme
+
+### 🔜 Gelecek Özellikler:
+- Smart contracts (Escrow)
+- IPFS file storage
+- NFT badges
+- DAO governance
+- Platform token (FRLNC)
+- ENS domain integration
+
+## 💰 Maliyet
+
+| Hizmet | Ücret |
+|--------|-------|
+| **Hosting** | $0 (IPFS) |
+| **Database** | $0 (Gun.js P2P) |
+| **Storage** | $0 (NFT.Storage) |
+| **Bandwidth** | $0 (P2P) |
+| **TOPLAM** | **$0/ay** |
+
+## 🔒 Güvenlik
+
+- ✅ End-to-end encryption
+- ✅ Self-sovereign identity
+- ✅ No central database
+- ✅ Censorship resistant
+- ✅ Private keys never stored
+- ✅ Zero data collection
 
 ## Lisans
 

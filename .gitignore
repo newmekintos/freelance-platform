@@ -35,3 +35,8 @@ Thumbs.db
 
 # Misc
 .cache/
+
+# IPFS
+kubo/
+kubo_v0.24.0_linux-amd64.tar.gz
+.last-ipfs-cid
